@@ -1,168 +1,159 @@
-**School Management – Proyecto CRUD Laravel**
+ **README.md – Proyecto Gestión de Alumnos (Laravel)**
+1. Objetivo del proyecto
 
-Aplicación web desarrollada en Laravel 10 que permite la gestión completa de alumnos: creación, listado, edición, borrado y visualización detallada.
-Este proyecto sigue los requisitos especificados en la práctica oficial del módulo.
+Este proyecto consiste en la creación de una aplicación web completa en Laravel 10,
+siguiendo los requisitos de la práctica del módulo, que incluye:
+- Una landing page como página pública
+- Sistema de autenticación
+- Un dashboard accesible solo para usuarios autenticados
+- Un CRUD completo de alumnos
+- Uso obligatorio de:
+  - Rutas
+    - Controladores
+    - Modelos
+    - Migraciones
+    - Componentes Blade
+    - Form Requests
 
-**Tecnologías usadas**
 
-Laravel 10
 
-PHP 8.1+
+2. Landing Page
 
-MySQL
+La landing es la página inicial del sitio y contiene:
 
-Composer
+- Menú principal con enlaces informativos
+- Botón de acceso al sistema
+- Sección de presentación
+- Footer con información básica del sitio
+Esta vista es accesible para cualquier visitante.
 
-Blade Templates
+3. Autenticación
 
-TailwindCSS / DaisyUI
+El sistema incluye:
+- Registro de usuarios
+- Inicio de sesión
+- Cierre de sesión
+- Restricción de acceso al dashboard y al CRUD
+Laravel Fortify / Breeze proporciona la base de la autenticación.
 
-Form Requests para validación
+4. Dashboard
 
-Componentes Blade
+Una vez logueado, el usuario accede al dashboard, que incluye:
+- Un menú superior con el estado de sesión
+- Botones de navegación
+- Una tarjeta (Componente Blade) que da acceso al CRUD de alumnos
+Este componente se ha creado como <x-card> siguiendo la estructura recomendada en el PDF.
 
-**Instalación**
+5. CRUD de Alumnos
 
-Clonar el repositorio:
+El módulo principal gestiona los alumnos con las siguientes operaciones:
+**Crear alumno**
+Formulario con los campos:
+- Nombre
+- Apellidos
+- Email
+- DNI
+- Fecha de nacimiento
+Validado mediante Form Request.
 
-git clone https://github.com/usuario/instituto.git
+**Listar alumnos**
+- Tabla con:
+- Id
+- Nombre
+- Apellidos
+- DNI
+- Fecha de nacimiento
+- Email
+- Acciones (Ver / Editar / Eliminar)
+Estilo inspirado en el mockup del PDF.
+
+**Editar alumno**
+Formulario similar al de creación, precargado con los datos.
+
+**Ver alumno**
+Página de detalle accesible desde la tabla.
+
+**Eliminar alumno**
+Confirmación con SweetAlert o confirm nativo.
+
+6. Componentes Blade
+
+Según la práctica, se ha creado al menos un componente reutilizable:
+
+Componente <x-card>
+Usado en el dashboard para presentar el acceso al CRUD.
+
+**Ejemplo de uso:
+
+<x-card title="CRUD Alumnos" url="{{ route('alumnos.index') }}" image="/img/alumnos.png">
+    Gestión de alumnos con edición, creación y borrado.
+</x-card>**
+
+7. Estructura técnica del proyecto
+- Rutas
+Las rutas del CRUD están definidas mediante:
+**Route::resource('alumnos', AlumnoController::class);**
+
+- Controlador
+AlumnoController gestiona todas las operaciones CRUD.
+
+- Modelo
+Alumno.php representa la tabla alumnos.
+
+- Migración
+Incluye los campos:
+nombre
+apellidos
+email
+dni
+f_nac
+
+- Validaciones
+Implementadas en:
+StoreAlumnoRequest
+UpdateAlumnoRequest
+
+8. Instalación del proyecto
+1️⃣ Clonar el repositorio
+git clone https://github.com/DavidMur2304/instituto.git
 cd instituto
 
-
-Instalar dependencias del backend:
-
+2️⃣ Instalar dependencias
 composer install
-
-
-Instalar dependencias del frontend:
-
 npm install
 
-
-Crear archivo .env:
-
+3️⃣ Crear archivo .env
 cp .env.example .env
 
-
-Generar clave de aplicación:
-
-php artisan key:generate
-
-🗄 Configuración de base de datos
-
-En el archivo .env:
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
+4️⃣ Configurar base de datos
 DB_DATABASE=instituto
 DB_USERNAME=root
 DB_PASSWORD=
 
-
-Crear la base de datos en MySQL:
-
-CREATE DATABASE instituto;
-
-
-Ejecutar migraciones:
-
+5️⃣ Ejecutar migraciones
 php artisan migrate
 
-
-Si necesitas reiniciar completamente la BD:
-
-php artisan migrate:fresh
-
-👥 Usuario de prueba (si se requiere)
-
-Si tu aplicación tiene autenticación:
-
-Email: admin@example.com
-Contraseña: password
-
-
-(O reemplazar por los datos reales creados en tu sistema).
-
-🧩 Funcionalidades del sistema
-🔐 Autenticación
-
-Registro
-
-Login / Logout
-
-Restricción de contenido para usuarios no autenticados
-
-🗂 CRUD de alumnos
-
-Incluye:
-
-Crear alumno
-
-Listar alumnos
-
-Editar alumno
-
-Ver detalles
-
-Borrar alumno con confirmación
-
-📑 Campos del alumno
-
-nombre
-
-apellidos
-
-email
-
-dni
-
-f_nac
-
-✔ Validación con Form Requests
-
-El proyecto utiliza:
-
-StoreAlumnoRequest
-
-UpdateAlumnoRequest
-
-para validar los datos antes de guardarlos.
-
-🎨 Componentes Blade
-
-El dashboard utiliza un componente <x-card> reutilizable.
-
-🧬 Comandos útiles
-
-Levantar servidor:
-
+6️⃣ Arrancar servidor
 php artisan serve
 
+9. Capturas de pantalla
+Landing Page:
 
-Compilar estilos:
+Login
 
-npm run dev
-
-
-Ver rutas:
-
-php artisan route:list
-
-📷 Capturas (opcional pero recomendado)
-
-Añade aquí imágenes como:
-
-Dashboard
+Dashboardhazmelo
 
 Listado de alumnos
 
-Formulario de crear
+Crear alumno
 
-Formulario de editar
+Editar alumno
 
-Vista de detalle
+Mostrar alumno
 
-🧑‍💻 Autor
-David Mur Tapia
-Ciclo DAM – Curso 2024/2025
+
+🧾 10. Conclusión
+
+Este proyecto ha permitido aplicar los conocimientos de Laravel necesarios para desarrollar una aplicación completa
+con autenticación, componentes, validación y CRUD, siguiendo las buenas prácticas recomendadas
+y cumpliendo todos los requisitos de la práctica.
