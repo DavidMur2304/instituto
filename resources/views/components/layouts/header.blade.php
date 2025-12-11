@@ -12,7 +12,7 @@
             <img src="/images/logo.png" class="h-20 w-auto object-contain">
 
             <span class="text-2xl font-bold tracking-wide text-white leading-none">
-                SCHOOL MANAGEMENT
+                {{ __('messages.school_management') }}
             </span>
         </div>
 
@@ -20,10 +20,10 @@
 
             @guest
                 <a href="/login">
-                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-primary">{{ __('messages.login') }}</button>
                 </a>
                 <a href="/register">
-                    <button class="btn btn-primary">Registrarse</button>
+                    <button class="btn btn-primary">{{ __('messages.register') }}</button>
                 </a>
             @endguest
 
@@ -31,13 +31,13 @@
                 <span class="text-white font-semibold">{{ Auth::user()->name }}</span>
 
                 <button class="btn btn-primary"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('messages.logout') }}
                 </button>
 
-                <form id="logout-form" 
-                      action="{{ route('logout') }}" 
-                      method="POST" 
+                <form id="logout-form"
+                      action="{{ route('logout') }}"
+                      method="POST"
                       class="hidden">
                     @csrf
                 </form>

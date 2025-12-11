@@ -114,29 +114,30 @@ StoreAlumnoRequest
 UpdateAlumnoRequest
 
 8. Instalación del proyecto
-1️⃣ Clonar el repositorio
+
+9. Clonar el repositorio
 git clone https://github.com/DavidMur2304/instituto.git
 cd instituto
 
-2️⃣ Instalar dependencias
+10. Instalar dependencias
 composer install
 npm install
 
-3️⃣ Crear archivo .env
+11. Crear archivo .env
 cp .env.example .env
 
-4️⃣ Configurar base de datos
+12. Configurar base de datos
 DB_DATABASE=instituto
 DB_USERNAME=root
 DB_PASSWORD=
 
-5️⃣ Ejecutar migraciones
+13. Ejecutar migraciones
 php artisan migrate
 
-6️⃣ Arrancar servidor
+14. Arrancar servidor
 php artisan serve
 
-9. Capturas de pantalla
+15. Capturas de pantalla
 Landing Page:
 
 Login

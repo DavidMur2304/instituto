@@ -10,10 +10,12 @@
                     alt="kids" />
             </figure>
             <div class="card-body">
-                <h2 class="card-title">Gestion Alumnos</h2>
-                <p>Dar de alta y gestionar alumnos</p>
+                <h2 class="card-title">{{ __('messages.student_management') }}</h2>
+                <p>{{ __('messages.student_management_desc') }}</p>
                 <div class="card-actions justify-end">
-                    <a href="{{ route('alumnos.index') }}" class="btn btn-primary">Accede ahora</a>
+                    <a href="{{ route('alumnos.index') }}" class="btn btn-primary">
+                        {{ __('messages.access_now') }}
+                    </a>
                 </div>
             </div>
         </div>
